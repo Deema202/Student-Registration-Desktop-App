@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>RegistrationForm.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #2aacb8;}
+.s5 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+RegistrationForm.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">tkinter </span><span class="s0">as </span><span class="s1">tk</span>
+<span class="s0">from </span><span class="s1">DataBaseHandler </span><span class="s0">import </span><span class="s1">DataBaseHandler</span>
+<span class="s0">import </span><span class="s1">matplotlib</span><span class="s2">.</span><span class="s1">pyplot </span><span class="s0">as </span><span class="s1">plt</span>
+<span class="s0">from </span><span class="s1">tkinter </span><span class="s0">import </span><span class="s1">messagebox</span>
+
+<span class="s0">class </span><span class="s1">RegistrationForm</span><span class="s2">(</span><span class="s1">tk</span><span class="s2">.</span><span class="s1">Frame</span><span class="s2">):</span>
+
+    <span class="s0">def </span><span class="s1">__init__</span><span class="s2">(</span><span class="s1">self</span><span class="s2">, </span><span class="s1">parent</span><span class="s2">):</span>
+        <span class="s1">super</span><span class="s2">().</span><span class="s1">__init__</span><span class="s2">(</span><span class="s1">parent</span><span class="s2">, </span><span class="s1">bg</span><span class="s2">=</span><span class="s3">&quot;#f8f9fa&quot;</span><span class="s2">, </span><span class="s1">padx</span><span class="s2">=</span><span class="s4">20</span><span class="s2">, </span><span class="s1">pady</span><span class="s2">=</span><span class="s4">20</span><span class="s2">)</span>
+
+        <span class="s5"># ===== Title  =====</span>
+        <span class="s1">tk</span><span class="s2">.</span><span class="s1">Label</span><span class="s2">(</span><span class="s1">self</span><span class="s2">, </span><span class="s1">text</span><span class="s2">=</span><span class="s3">&quot;Student Registration Form&quot;</span><span class="s2">, </span><span class="s1">font</span><span class="s2">=(</span><span class="s3">&quot;Arial&quot;</span><span class="s2">, </span><span class="s4">16</span><span class="s2">, </span><span class="s3">&quot;bold&quot;</span><span class="s2">), </span><span class="s1">bg</span><span class="s2">=</span><span class="s3">&quot;#f8f9fa&quot;</span><span class="s2">).</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">pady</span><span class="s2">=(</span><span class="s4">0</span><span class="s2">, </span><span class="s4">20</span><span class="s2">))</span>
+
+        <span class="s5"># ===== Name =====</span>
+        <span class="s1">tk</span><span class="s2">.</span><span class="s1">Label</span><span class="s2">(</span><span class="s1">self</span><span class="s2">, </span><span class="s1">text</span><span class="s2">=</span><span class="s3">&quot;Full Name:&quot;</span><span class="s2">, </span><span class="s1">font</span><span class="s2">=(</span><span class="s3">&quot;Arial&quot;</span><span class="s2">, </span><span class="s4">12</span><span class="s2">), </span><span class="s1">bg</span><span class="s2">=</span><span class="s3">&quot;#f8f9fa&quot;</span><span class="s2">).</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">anchor</span><span class="s2">=</span><span class="s3">&quot;w&quot;</span><span class="s2">)</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">Entry_name </span><span class="s2">= </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">Entry</span><span class="s2">(</span><span class="s1">self</span><span class="s2">, </span><span class="s1">width</span><span class="s2">=</span><span class="s4">40</span><span class="s2">, </span><span class="s1">font</span><span class="s2">=(</span><span class="s3">&quot;Arial&quot;</span><span class="s2">, </span><span class="s4">11</span><span class="s2">))</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">Entry_name</span><span class="s2">.</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">pady</span><span class="s2">=(</span><span class="s4">0</span><span class="s2">, </span><span class="s4">10</span><span class="s2">))</span>
+
+        <span class="s5"># ===== Email =====</span>
+        <span class="s1">tk</span><span class="s2">.</span><span class="s1">Label</span><span class="s2">(</span><span class="s1">self</span><span class="s2">, </span><span class="s1">text</span><span class="s2">=</span><span class="s3">&quot;Email:&quot;</span><span class="s2">, </span><span class="s1">font</span><span class="s2">=(</span><span class="s3">&quot;Arial&quot;</span><span class="s2">, </span><span class="s4">12</span><span class="s2">), </span><span class="s1">bg</span><span class="s2">=</span><span class="s3">&quot;#f8f9fa&quot;</span><span class="s2">).</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">anchor</span><span class="s2">=</span><span class="s3">&quot;w&quot;</span><span class="s2">)</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">Entry_email </span><span class="s2">= </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">Entry</span><span class="s2">(</span><span class="s1">self</span><span class="s2">, </span><span class="s1">width</span><span class="s2">=</span><span class="s4">40</span><span class="s2">, </span><span class="s1">font</span><span class="s2">=(</span><span class="s3">&quot;Arial&quot;</span><span class="s2">, </span><span class="s4">11</span><span class="s2">))</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">Entry_email</span><span class="s2">.</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">pady</span><span class="s2">=(</span><span class="s4">0</span><span class="s2">, </span><span class="s4">10</span><span class="s2">))</span>
+
+        <span class="s5"># ===== Gender =====</span>
+        <span class="s1">tk</span><span class="s2">.</span><span class="s1">Label</span><span class="s2">(</span><span class="s1">self</span><span class="s2">, </span><span class="s1">text</span><span class="s2">=</span><span class="s3">&quot;Gender:&quot;</span><span class="s2">, </span><span class="s1">font</span><span class="s2">=(</span><span class="s3">&quot;Arial&quot;</span><span class="s2">, </span><span class="s4">12</span><span class="s2">), </span><span class="s1">bg</span><span class="s2">=</span><span class="s3">&quot;#f8f9fa&quot;</span><span class="s2">).</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">anchor</span><span class="s2">=</span><span class="s3">&quot;w&quot;</span><span class="s2">)</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">Entry_gender </span><span class="s2">= </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">StringVar</span><span class="s2">(</span><span class="s1">value</span><span class="s2">=</span><span class="s3">&quot;male&quot;</span><span class="s2">)</span>
+
+        <span class="s1">gender_frame </span><span class="s2">= </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">Frame</span><span class="s2">(</span><span class="s1">self</span><span class="s2">, </span><span class="s1">bg</span><span class="s2">=</span><span class="s3">&quot;#f8f9fa&quot;</span><span class="s2">)</span>
+        <span class="s1">gender_frame</span><span class="s2">.</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">pady</span><span class="s2">=(</span><span class="s4">0</span><span class="s2">, </span><span class="s4">15</span><span class="s2">))</span>
+        <span class="s1">tk</span><span class="s2">.</span><span class="s1">Radiobutton</span><span class="s2">(</span><span class="s1">gender_frame</span><span class="s2">, </span><span class="s1">text</span><span class="s2">=</span><span class="s3">'Male'</span><span class="s2">, </span><span class="s1">variable</span><span class="s2">=</span><span class="s1">self</span><span class="s2">.</span><span class="s1">Entry_gender</span><span class="s2">, </span><span class="s1">value</span><span class="s2">=</span><span class="s3">'male'</span><span class="s2">, </span><span class="s1">bg</span><span class="s2">=</span><span class="s3">&quot;#f8f9fa&quot;</span><span class="s2">).</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">side</span><span class="s2">=</span><span class="s3">&quot;left&quot;</span><span class="s2">, </span><span class="s1">padx</span><span class="s2">=</span><span class="s4">10</span><span class="s2">)</span>
+        <span class="s1">tk</span><span class="s2">.</span><span class="s1">Radiobutton</span><span class="s2">(</span><span class="s1">gender_frame</span><span class="s2">, </span><span class="s1">text</span><span class="s2">=</span><span class="s3">'Female'</span><span class="s2">, </span><span class="s1">variable</span><span class="s2">=</span><span class="s1">self</span><span class="s2">.</span><span class="s1">Entry_gender</span><span class="s2">, </span><span class="s1">value</span><span class="s2">=</span><span class="s3">'female'</span><span class="s2">, </span><span class="s1">bg</span><span class="s2">=</span><span class="s3">&quot;#f8f9fa&quot;</span><span class="s2">).</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">side</span><span class="s2">=</span><span class="s3">&quot;left&quot;</span><span class="s2">, </span><span class="s1">padx</span><span class="s2">=</span><span class="s4">10</span><span class="s2">)</span>
+
+        <span class="s5"># ===== submit =====</span>
+        <span class="s1">button_frame </span><span class="s2">= </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">Frame</span><span class="s2">(</span><span class="s1">self</span><span class="s2">, </span><span class="s1">bg</span><span class="s2">=</span><span class="s3">&quot;#f8f9fa&quot;</span><span class="s2">)</span>
+        <span class="s1">button_frame</span><span class="s2">.</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">pady</span><span class="s2">=</span><span class="s4">15</span><span class="s2">)</span>
+
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">Submit_button </span><span class="s2">= </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">Button</span><span class="s2">(</span><span class="s1">button_frame</span><span class="s2">, </span><span class="s1">text</span><span class="s2">=</span><span class="s3">'Submit'</span><span class="s2">, </span><span class="s1">command</span><span class="s2">=</span><span class="s1">self</span><span class="s2">.</span><span class="s1">submit_form</span><span class="s2">, </span><span class="s1">width</span><span class="s2">=</span><span class="s4">15</span><span class="s2">, </span><span class="s1">bg</span><span class="s2">=</span><span class="s3">&quot;#007BFF&quot;</span><span class="s2">, </span><span class="s1">fg</span><span class="s2">=</span><span class="s3">&quot;white&quot;</span><span class="s2">, </span><span class="s1">font</span><span class="s2">=(</span><span class="s3">&quot;Arial&quot;</span><span class="s2">, </span><span class="s4">11</span><span class="s2">))</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">Submit_button</span><span class="s2">.</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">side</span><span class="s2">=</span><span class="s3">&quot;left&quot;</span><span class="s2">, </span><span class="s1">padx</span><span class="s2">=</span><span class="s4">10</span><span class="s2">)</span>
+
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">Visualize_button </span><span class="s2">= </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">Button</span><span class="s2">(</span><span class="s1">button_frame</span><span class="s2">, </span><span class="s1">text</span><span class="s2">=</span><span class="s3">'Visualize Gender Distribution'</span><span class="s2">, </span><span class="s1">command</span><span class="s2">=</span><span class="s1">self</span><span class="s2">.</span><span class="s1">visualize_gender_distribution</span><span class="s2">, </span><span class="s1">width</span><span class="s2">=</span><span class="s4">25</span><span class="s2">, </span><span class="s1">bg</span><span class="s2">=</span><span class="s3">&quot;#28A745&quot;</span><span class="s2">, </span><span class="s1">fg</span><span class="s2">=</span><span class="s3">&quot;white&quot;</span><span class="s2">, </span><span class="s1">font</span><span class="s2">=(</span><span class="s3">&quot;Arial&quot;</span><span class="s2">, </span><span class="s4">11</span><span class="s2">))</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">Visualize_button</span><span class="s2">.</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">side</span><span class="s2">=</span><span class="s3">&quot;left&quot;</span><span class="s2">, </span><span class="s1">padx</span><span class="s2">=</span><span class="s4">10</span><span class="s2">)</span>
+
+
+    <span class="s0">def </span><span class="s1">submit_form</span><span class="s2">(</span><span class="s1">self</span><span class="s2">):</span>
+        <span class="s1">name </span><span class="s2">= </span><span class="s1">self</span><span class="s2">.</span><span class="s1">Entry_name</span><span class="s2">.</span><span class="s1">get</span><span class="s2">()</span>
+        <span class="s1">email </span><span class="s2">= </span><span class="s1">self</span><span class="s2">.</span><span class="s1">Entry_email</span><span class="s2">.</span><span class="s1">get</span><span class="s2">()</span>
+        <span class="s1">gender </span><span class="s2">= </span><span class="s1">self</span><span class="s2">.</span><span class="s1">Entry_gender</span><span class="s2">.</span><span class="s1">get</span><span class="s2">()</span>
+
+        <span class="s0">if </span><span class="s1">name </span><span class="s0">and </span><span class="s1">email </span><span class="s0">and </span><span class="s1">gender</span><span class="s2">:</span>
+            <span class="s1">DataBaseHandler</span><span class="s2">.</span><span class="s1">insert_student</span><span class="s2">(</span><span class="s1">name</span><span class="s2">, </span><span class="s1">email</span><span class="s2">, </span><span class="s1">gender</span><span class="s2">)</span>
+            <span class="s1">messagebox</span><span class="s2">.</span><span class="s1">showinfo</span><span class="s2">(</span><span class="s3">'Success'</span><span class="s2">, </span><span class="s3">'The data added successfully'</span><span class="s2">)</span>
+        <span class="s0">else</span><span class="s2">:</span>
+            <span class="s1">messagebox</span><span class="s2">.</span><span class="s1">showwarning</span><span class="s2">(</span><span class="s3">'Warning'</span><span class="s2">, </span><span class="s3">'Please enter all the fields'</span><span class="s2">)</span>
+
+    <span class="s0">def </span><span class="s1">visualize_gender_distribution</span><span class="s2">(</span><span class="s1">self</span><span class="s2">):</span>
+        <span class="s1">count_male </span><span class="s2">= </span><span class="s4">0</span>
+        <span class="s1">count_female </span><span class="s2">= </span><span class="s4">0</span>
+
+        <span class="s0">for </span><span class="s1">student </span><span class="s0">in </span><span class="s1">DataBaseHandler</span><span class="s2">.</span><span class="s1">get_all_students</span><span class="s2">():</span>
+            <span class="s1">gender </span><span class="s2">= </span><span class="s1">str</span><span class="s2">(</span><span class="s1">student</span><span class="s2">[</span><span class="s4">3</span><span class="s2">]).</span><span class="s1">lower</span><span class="s2">()</span>
+            <span class="s0">if </span><span class="s1">gender </span><span class="s2">== </span><span class="s3">'male'</span><span class="s2">:</span>
+                <span class="s1">count_male </span><span class="s2">+= </span><span class="s4">1</span>
+            <span class="s0">elif </span><span class="s1">gender </span><span class="s2">== </span><span class="s3">'female'</span><span class="s2">:</span>
+                <span class="s1">count_female </span><span class="s2">+= </span><span class="s4">1</span>
+
+        <span class="s1">total </span><span class="s2">= </span><span class="s1">count_male </span><span class="s2">+ </span><span class="s1">count_female</span>
+
+        <span class="s0">if </span><span class="s1">total </span><span class="s2">== </span><span class="s4">0</span><span class="s2">:</span>
+            <span class="s1">messagebox</span><span class="s2">.</span><span class="s1">showinfo</span><span class="s2">(</span><span class="s3">'Info'</span><span class="s2">, </span><span class="s3">'No student data available yet!'</span><span class="s2">)</span>
+            <span class="s0">return</span>
+
+        <span class="s5"># create a pie chart</span>
+        <span class="s1">labels </span><span class="s2">= [</span><span class="s3">'Male'</span><span class="s2">, </span><span class="s3">'Female'</span><span class="s2">]</span>
+        <span class="s1">colors </span><span class="s2">= [</span><span class="s3">'skyblue'</span><span class="s2">, </span><span class="s3">'lightpink'</span><span class="s2">]</span>
+        <span class="s1">size </span><span class="s2">= [</span><span class="s1">count_male</span><span class="s2">, </span><span class="s1">count_female</span><span class="s2">]</span>
+
+        <span class="s1">plt</span><span class="s2">.</span><span class="s1">figure</span><span class="s2">(</span><span class="s1">figsize</span><span class="s2">=(</span><span class="s4">5</span><span class="s2">, </span><span class="s4">5</span><span class="s2">))</span>
+        <span class="s1">plt</span><span class="s2">.</span><span class="s1">title</span><span class="s2">(</span><span class="s3">'Gender Distribution Of Students'</span><span class="s2">)</span>
+        <span class="s1">plt</span><span class="s2">.</span><span class="s1">pie</span><span class="s2">(</span><span class="s1">size</span><span class="s2">, </span><span class="s1">labels</span><span class="s2">=</span><span class="s1">labels</span><span class="s2">, </span><span class="s1">colors</span><span class="s2">=</span><span class="s1">colors</span><span class="s2">, </span><span class="s1">autopct</span><span class="s2">=</span><span class="s3">'%1.1f%%'</span><span class="s2">)</span>
+        <span class="s1">plt</span><span class="s2">.</span><span class="s1">axis</span><span class="s2">(</span><span class="s3">'equal'</span><span class="s2">)</span>
+        <span class="s1">plt</span><span class="s2">.</span><span class="s1">show</span><span class="s2">()</span>
+</pre>
+</body>
+</html>
